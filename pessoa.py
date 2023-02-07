@@ -54,3 +54,8 @@ class pessoa:
     
     def ano_nascimento(self):
         print(f"{self.nome} nasceu em {self.get_ano_nascimento()}")
+        
+    @classmethod
+    def por_ano_nascimento(cls, nome, ano_nascimento):
+        idade = cls.ano_atual - ano_nascimento
+        return cls(nome, idade)
