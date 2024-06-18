@@ -2,9 +2,11 @@ import sys
 
 class Maze:
     def __init__(self) -> None:
-        self.direction = 'up'
         self.origin = [0,0]
         self.destination = [0,0]
+        self.sizeColumns = 0
+        self.sizeLines = 0
+        self.map = []
         pass
 
     def read(self):
@@ -20,7 +22,7 @@ class Maze:
 
         return self
     
-    def map(self):
+    def makeMap(self):
         self.map = []
 
         for line in self.readLines:
@@ -33,13 +35,18 @@ class Maze:
             if 'X' in line:
                 self.destination[0] = l
                 self.destination[1] = line.index('X')
+
+        self.sizeLines = len(self.map)
+        self.sizeColumns = len(self.map[0])
+
         return self
     
-    def render(self):
-        for line in self.map:
-            for chunk in line:
-                print(chunk, end='')
+    def render(self, position: list):
+        for l, line in enumerate(self.map):
+            for c, chunk in enumerate(line):
+                if (position == [l, c]):
+                    print('*', end='')
+                else:
+                    print(chunk, end='')
             print('\r')
 
-    # def leftHand(self):
-        
