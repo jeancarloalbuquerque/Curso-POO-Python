@@ -11,9 +11,7 @@ def handOnWall(hand = 'right'):
         if(solver.lookAhead() != 'wall'):
             solver.forward()
             maze.render(solver.position, solver.direction)
-
             solver.left() if hand == 'left' else solver.right()
-            # maze.render(solver.position, solver.direction)
 
             if (solver.lookAhead() != 'wall'):
                 solver.forward()
@@ -21,10 +19,8 @@ def handOnWall(hand = 'right'):
 
             else:
                 solver.right() if hand == 'left' else solver.left()
-                # maze.render(solver.position, solver.direction)
         else:
             solver.right() if hand == 'left' else solver.left()
-
 
 handOnWall('left')
 
