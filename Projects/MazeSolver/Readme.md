@@ -4,9 +4,9 @@
 
 Esse projeto tem como propósito estudar os diferentes algoritmos para resolução de labirintos.
 
-Para todo o projeto, será utilizado a ferramenta geradora de labirintos do [dcode](dcode.fr).
+Para todo o projeto, será utilizado a ferramenta geradora de labirintos do [dcode](https://dcode.fr).
 
-[Ferramenta geradora de labirintos](dcode.fr/maze-generator)
+[Ferramenta geradora de labirintos](https://dcode.fr/maze-generator)
 
 **Utilizar os seguintes critérios**
 
