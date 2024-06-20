@@ -1,4 +1,6 @@
+import os
 import sys
+import time
 
 class Maze:
     def __init__(self) -> None:
@@ -41,12 +43,26 @@ class Maze:
 
         return self
     
-    def render(self, position: list):
+    def render(self, position: list, direction):
+        os.system('clear')
         for l, line in enumerate(self.map):
             for c, chunk in enumerate(line):
                 if (position == [l, c]):
-                    print('*', end='')
+                    self.renderPosition(direction)
                 else:
                     print(chunk, end='')
             print('\r')
+        time.sleep(0.2)
 
+    def renderPosition(self, direction):
+
+        if (direction == 'up'):
+            print('^', end='')
+        elif (direction == 'right'):
+            print('>', end='')
+        elif (direction == 'down'):
+            print('v', end='')
+        elif (direction == 'left'):
+            print('<', end='')
+        else:
+            print('*', end='')

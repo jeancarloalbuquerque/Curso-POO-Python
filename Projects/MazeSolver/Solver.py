@@ -4,7 +4,7 @@ class Solver():
     def __init__(self, maze: Maze):
         self.maze = maze
         self.position = maze.origin
-        self.direction = 'up'
+        self.direction = 'down'
 
     def right(self):
         if (self.direction == 'up'):
@@ -36,7 +36,6 @@ class Solver():
         elif (self.direction == 'right'):
             self.move(self.position[0], self.position[1] + 1)
         elif (self.direction == 'down'):
-            
             self.move(self.position[0] + 1, self.position[1])
         elif (self.direction == 'left'):
             self.move(self.position[0], self.position[1] - 1)
@@ -45,13 +44,13 @@ class Solver():
         
     
     def move(self, line, column):
-        if (self.look(line, column) == 'passage'):
+        if (self.look(line, column) != 'wall'):
             self.position = [line, column]
         return self
 
     
     def look(self, line, column):
-        if (line >= 0 and line <= len(self.maze.map)):
+        if (line >= 0 and line <= len(self.maze.map) and column >= 0 and column <= len(self.maze.map[0])):
             if (self.maze.map[line][column] == '█'):
                 return 'wall'
             if (self.maze.map[line][column] == ' '):
@@ -74,4 +73,4 @@ class Solver():
             return self.look(self.position[0], self.position[1] - 1)
 
     def render(self):
-        self.maze.render(self.position)
+        self.maze.render(self.position, self.direction)
