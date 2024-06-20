@@ -6,29 +6,20 @@ class Solver():
         self.position = maze.origin
         self.direction = 'down'
 
-    def right(self):
-        if (self.direction == 'up'):
-            self.direction = 'right'
-        elif (self.direction == 'right'):
-            self.direction = 'down'
-        elif (self.direction == 'down'):
-            self.direction = 'left'
-        elif (self.direction == 'left'):
-            self.direction = 'up'
+    def turn(self, direction = 1):
+        directions = ['up', 'right', 'down', 'left']
+        total = len(directions)
 
-        return self
+        current = directions.index(self.direction)
+        next = (current + direction) % total
+        
+        return directions[next]
+
+    def right(self):
+       self.direction = self.turn(1)
     
     def left(self):
-        if (self.direction == 'up'):
-            self.direction = 'left'
-        elif (self.direction == 'left'):
-            self.direction = 'down'
-        elif (self.direction == 'down'):
-            self.direction = 'right'
-        elif (self.direction == 'right'):
-            self.direction = 'up'
-
-        return self
+       self.direction = self.turn(-1)
     
     def forward(self):
         if (self.direction == 'up'):
